@@ -30,21 +30,23 @@ public class Graph implements Graph_interface {
             next = null;
             last = this;
         }
+
+        public int getX(){return x;}
+        public int getY(){return y;}
+        public int getWeight(){return weight;}
+        public Edge getNext(){return next;}
     }
 
-    private ArrayList<Edge> edges;
-    private int numVertices;
+    public ArrayList<Edge> edges;
 
     /**
      * Инициализирует пустой граф
      */
     public Graph() {
-        numVertices = 0;
         edges = new ArrayList<>();
     }
 
     public void clear() {
-        numVertices = 0;
         edges.clear();
     }
 
@@ -58,7 +60,5 @@ public class Graph implements Graph_interface {
             }
         }
         edges.add(e);
-
-        numVertices++;
     }
 }
