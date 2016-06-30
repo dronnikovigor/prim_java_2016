@@ -13,18 +13,16 @@ import java.util.Scanner;
  * и выполнение шага алгоритма, executeStepAlgorithm.
  */
 public class Algorithm {
-    private final static byte MAX_V = 8;
     private final static int MAX_INT = 1000;
-    private Graph G;
-    private byte startVertex;    // начальная вершина
-    private byte numVertices;    // количество вершин
+    private Graph G;            // исходный граф
+    private byte startVertex;   // начальная вершина
+    private byte numVertices;   // количество вершин
     private byte[] parent;
     private boolean[] intree;   // вершина в дереве?
     private int[] distance;     // стоимость добавления к дереву
 
     private Graph.Edge p;       // временный указатель
-    private byte v;              // текущая вершина для обработки
-
+    private byte v;             // текущая вершина для обработки
 
     /**
      *
@@ -33,9 +31,13 @@ public class Algorithm {
         G = new Graph();
         startVertex = 0;
 
-        intree = new boolean[MAX_V + 1];
-        distance = new int[MAX_V + 1];
-        parent = new byte[MAX_V + 1];
+        intree = new boolean[G.edges.length];
+        distance = new int[G.edges.length];
+        parent = new byte[G.edges.length];
+    }
+
+    public byte[] getParent() {
+        return parent;
     }
 
     /**
@@ -45,18 +47,43 @@ public class Algorithm {
         File f = new File("input.txt");
         try {
             Scanner scan = new Scanner(f);
-
-            numVertices = scan.nextByte();
+            byte temp = 0;
+            temp = scan.nextByte();
+            if (temp <= 0) throw new IllegalArgumentException();
+            else
+                numVertices = temp;
 
             for (int i = 0; i < numVertices; ++i) {
-                byte vertex_x = scan.nextByte();
-                byte numEdges = scan.nextByte();
+                byte vertex_x;
+                temp = scan.nextByte();
+                if (temp <= 0) throw new IllegalArgumentException();
+                else
+                    vertex_x = temp;
+
+                byte numEdges;
+                temp = scan.nextByte();
+                if (temp <= 0) throw new IllegalArgumentException();
+                else
+                    numEdges = temp;
+
                 for (int j = 0; j < numEdges; ++j) {
-                    byte vertex_y = scan.nextByte();
-                    short _weight = scan.nextShort();
+
+                    byte vertex_y;
+                    temp = scan.nextByte();
+                    if (temp <= 0) throw new IllegalArgumentException();
+                    else
+                        vertex_y = temp;
+
+                    int _weight;
+                    int t = scan.nextInt();
+                    if (temp <= 0) throw new IllegalArgumentException();
+                    else
+                        _weight = t;
+
                     G.addEdge(vertex_x, vertex_y, _weight);
                 }
             }
+            System.out.println("Данные считаны успешно");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -94,13 +121,14 @@ public class Algorithm {
             int dist;               // наилучшее текущее расстояние от начала
 
             intree[v] = true;
-            p = G.edges.get(v);
+            p = G.edges[v];
             while (p != null) {
                 w = p.getY();
                 weight = p.getWeight();
                 if (distance[w] > weight && !intree[w]) {
                     distance[w] = weight;
                     parent[w] = v;
+
                 }
                 p = p.getNext();
             }

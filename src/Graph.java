@@ -16,14 +16,16 @@ import java.util.ArrayList;
  * @author Lyushnina Elena
  */
 public class Graph implements Graph_interface {
+    private final static byte MAX_V = 8;
+
     public static class Edge {
-        private int x;
-        private int y;
+        private byte x;
+        private byte y;
         private int weight;
         private Edge next;
         private Edge last;
 
-        public Edge(int _x, int _y, int _weight) {
+        public Edge(byte _x, byte _y, int _weight) {
             x = _x;
             y = _y;
             weight = _weight;
@@ -31,34 +33,73 @@ public class Graph implements Graph_interface {
             last = this;
         }
 
-        public int getX(){return x;}
-        public int getY(){return y;}
-        public int getWeight(){return weight;}
-        public Edge getNext(){return next;}
+        public byte getX() {
+            return x;
+        }
+
+        public byte getY() {
+            return y;
+        }
+
+        public int getWeight() {
+            return weight;
+        }
+
+        public Edge getNext() {
+            return next;
+        }
+
+        public void setLast(Edge last) {
+            this.last = last;
+        }
+
+        public void setNext(Edge next) {
+            this.next = next;
+        }
+
+        public void setWeight(int weight) {
+            this.weight = weight;
+        }
+
+        public void setX(byte x) {
+            this.x = x;
+        }
+
+        public void setY(byte y) {
+            this.y = y;
+        }
+
     }
 
-    public ArrayList<Edge> edges;
+    //    public ArrayList<Edge> edges;
+    public Edge[] edges;
 
     /**
      * Инициализирует пустой граф
      */
     public Graph() {
-        edges = new ArrayList<>();
+        //edges = new ArrayList<>();
+        edges = new Edge[MAX_V + 1];
+        clear();
     }
 
     public void clear() {
-        edges.clear();
+        for (int i = 0; i < edges.length; ++i) {
+            byte zero = 0;
+            Edge e = new Edge(zero, zero, 0);
+            edges[i] = e;
+        }
     }
 
-    public void addEdge(int _x, int _y, int _weight) {
+    public void addEdge(byte _x, byte _y, int _weight) {
         Edge e = new Edge(_x, _y, _weight);
-        for (int i = 0; i < edges.size(); ++i) {
-            if (edges.get(i).x == _x) {
-                edges.get(i).last.next = e;
-                edges.get(i).last = e;
+        for (int i = 1; i < edges.length; ++i) {
+            if (edges[i].getX() == _x) {
+                edges[i].last.next = e;
+                edges[i].last = e;
                 return;
             }
         }
-        edges.add(e);
+        edges[_x] = e;
     }
 }
