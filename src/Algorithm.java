@@ -62,7 +62,7 @@ public class Algorithm {
 
                 byte numEdges;
                 temp = scan.nextByte();
-                if (temp <= 0) throw new IllegalArgumentException();
+                if (temp < 0) throw new IllegalArgumentException();
                 else
                     numEdges = temp;
 
@@ -145,4 +145,19 @@ public class Algorithm {
             return true;
         }
     }
+
+    public void clear(){
+        G.clear();
+        startVertex = 0;
+        numVertices = 0;
+        for (int i = 0; i < parent.length; ++i){
+            parent[i] = -1;
+            intree[i] = false;
+            distance[i] = MAX_INT;
+        }
+        p = null;
+        v = 0;
+
+    }
 }
+
