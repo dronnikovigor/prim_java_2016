@@ -41,7 +41,7 @@ public class MainWindow extends JFrame {
     }
     public class ExitButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            //PrimAlg alg_window = new PrimAlg();
+            System.exit(1);
         }
     }
 }
