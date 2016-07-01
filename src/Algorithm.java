@@ -15,14 +15,14 @@ import java.util.Scanner;
 public class Algorithm {
     private final static int MAX_INT = 1000;
     private Graph G;            // исходный граф
-    private byte startVertex;   // начальная вершина
-    private byte numVertices;   // количество вершин
-    private byte[] parent;
+    private int startVertex;   // начальная вершина
+    private int numVertices;   // количество вершин
+    private int[] parent;
     private boolean[] intree;   // вершина в дереве?
     private int[] distance;     // стоимость добавления к дереву
 
     private Graph.Edge p;       // временный указатель
-    private byte v;             // текущая вершина для обработки
+    private int v;             // текущая вершина для обработки
 
     /**
      *
@@ -33,10 +33,10 @@ public class Algorithm {
 
         intree = new boolean[G.edges.length];
         distance = new int[G.edges.length];
-        parent = new byte[G.edges.length];
+        parent = new int[G.edges.length];
     }
 
-    public byte[] getParent() {
+    public int[] getParent() {
         return parent;
     }
 
@@ -96,7 +96,7 @@ public class Algorithm {
      *
      * @param s начальная вершина
      */
-    public void start(byte s) {
+    public void start(int s) {
         startVertex = s;
         for (int i = 1; i <= numVertices; ++i) {
             intree[i] = false;

@@ -14,6 +14,7 @@ public class PrimAlg extends JFrame {
     private JTextField startParam;
     private JTextPane outputText;
     private Algorithm prim;
+    private int startParamNum;
 
     public PrimAlg() {
         super("Алгоритм Прима");
@@ -43,6 +44,8 @@ public class PrimAlg extends JFrame {
     }
     public class StartButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            startParamNum = Integer.parseInt(startParam.getText());
+            prim.start(startParamNum);
         }
     }
     public class NextButtonActionListener implements ActionListener {
