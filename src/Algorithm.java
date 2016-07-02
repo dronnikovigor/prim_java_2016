@@ -42,17 +42,14 @@ public class Algorithm {
 
     public Graph getGraph() {return G;}
 
+    public Graph.Edge getEdge(int j) {return G.edges[j];}
+
     public int getNumVertices() {return numVertices;}
 
-    public int getEdgeX(int j){return G.edges[j].getX();}
-
-    public int getEdgeY(int j){return G.edges[j].getY();}
-
-    public int getLenght() {
+    public int getLength() {
         return G.edges.length;
     }
 
-    public int getWeight(int j) {return G.edges[j].getWeight();}
 
     /**
      * Считывание данных из файла

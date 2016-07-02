@@ -54,25 +54,31 @@ public class PrimAlg extends JFrame {
                 u=windowSizeW/5+50,
                 v=windowSizeH/3-20,
                 rPoint = 20;
-        for (int j = 1; j<prim.getLenght(); j++){
-            double x1 = r * Math.cos(angle * prim.getEdgeX(j) - pi / 2) + u + rPoint / 2;
-            double y1 = r * Math.sin(angle * prim.getEdgeX(j) - pi / 2) + v + rPoint / 2;
-            double x2 = r * Math.cos(angle * prim.getEdgeY(j) - pi / 2) + u + rPoint / 2;
-            double y2 = r * Math.sin(angle * prim.getEdgeY(j) - pi / 2) + v + rPoint / 2;
+        for (int j = 1; j < prim.getLength(); ++j){
+            Graph.Edge e = prim.getEdge(j);
+            while (e != null) {
+                if (e.getX()!=0 && e.getY()!=0) {
+                    double x1 = r * Math.cos(angle * e.getX() - pi / 2) + u + rPoint / 2;
+                    double y1 = r * Math.sin(angle * e.getX() - pi / 2) + v + rPoint / 2;
+                    double x2 = r * Math.cos(angle * e.getY() - pi / 2) + u + rPoint / 2;
+                    double y2 = r * Math.sin(angle * e.getY() - pi / 2) + v + rPoint / 2;
 
-            int _x1 = (int)x1;
-            int _y1 = (int)y1;
-            int _x2 = (int)x2;
-            int _y2 = (int)y2;
+                    int _x1 = (int) x1;
+                    int _y1 = (int) y1;
+                    int _x2 = (int) x2;
+                    int _y2 = (int) y2;
 
-            gfx.drawLine(_x1, _y1, _x2, _y2);
+                    gfx.drawLine(_x1, _y1, _x2, _y2);
 
-            x1 = (x1 + x2) / 2 + 10;
-            y1 = (y1 + y2) / 2 + 10;
-            _x1 = (int)x1;
-            _y1 = (int)y1;
+                    x1 = (x1 + x2) / 2 + 10;
+                    y1 = (y1 + y2) / 2 + 10;
+                    _x1 = (int) x1;
+                    _y1 = (int) y1;
 
-            gfx.drawString(String.valueOf(prim.getWeight(j)), _x1+rPoint, _y1);
+                    gfx.drawString(String.valueOf(e.getWeight()), _x1 + rPoint, _y1);
+                }
+                e = e.getNext();
+            }
         }
         for (int j = 1; j<=prim.getNumVertices(); j++){
             double x = r*Math.cos(angle*(j)-pi/2) + u;
@@ -82,8 +88,6 @@ public class PrimAlg extends JFrame {
             gfx.drawOval(_x, _y, rPoint, rPoint); // рисуем круг
             gfx.drawString(String.valueOf(j), _x+rPoint, _y);
         }
-
-
     }
 
     public class LoadButtonActionListener implements ActionListener {
