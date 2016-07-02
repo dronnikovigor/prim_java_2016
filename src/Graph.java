@@ -19,8 +19,8 @@ public class Graph implements Graph_interface {
     private final static byte MAX_V = 8;
 
     public static class Edge {
-        private byte x;
-        private byte y;
+        private int x;
+        private int y;
         private int weight;
         private Edge next;
         private Edge last;
@@ -33,11 +33,11 @@ public class Graph implements Graph_interface {
             last = this;
         }
 
-        public byte getX() {
+        public int getX() {
             return x;
         }
 
-        public byte getY() {
+        public int getY() {
             return y;
         }
 
