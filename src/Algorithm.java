@@ -35,7 +35,7 @@ public class Algorithm {
         distance = new int[G.edges.length];
         parent = new int[G.edges.length];
     }
-
+    public byte getMAXV(){return G.MAX_V;}
     public int[] getParent() {
         return parent;
     }

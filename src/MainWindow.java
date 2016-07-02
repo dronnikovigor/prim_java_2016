@@ -23,6 +23,8 @@ public class MainWindow extends JFrame {
         aboutButton.addActionListener(aboutActionListener);
         exitButton.addActionListener(exitActionListener);
 
+        aboutButton.setEnabled(false);
+
         setSize(500,500);
         setVisible(true);
 
