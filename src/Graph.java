@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Lyushnina Elena
  */
 public class Graph implements Graph_interface {
-    private final static byte MAX_V = 8;
+    protected final static byte MAX_V = 8;
 
     public static class Edge {
         private int x;
@@ -68,6 +68,8 @@ public class Graph implements Graph_interface {
         public void setY(byte y) {
             this.y = y;
         }
+
+
 
     }
 
