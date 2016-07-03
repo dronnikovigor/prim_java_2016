@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Created by Lyushnina Elena on 24.06.2016.
  */
@@ -70,5 +68,10 @@ public class Graph implements Graph_interface {
 
         e.next = edges[_x];
         edges[_x] = e;
+
+        Edge _e = new Edge(_y, _x, _weight);
+
+        _e.next = edges[_y];
+        edges[_y] = _e;
     }
 }

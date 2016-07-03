@@ -136,7 +136,7 @@ public class Algorithm {
                     if (distance[w] > weight && !intree[w]) {
                         distance[w] = weight;
                         parent[w] = v;
-                        textInfo += "Вес ребра до данной вершины меньше тем тот, который уже записан и эта вершина еще не добавлена в дерево. Заменяем вес на новый.\n";
+                        textInfo += "Вес ребра до данной вершины меньше чем тот, который уже записан и эта вершина еще не добавлена в дерево. Заменяем вес на новый.\n";
                     } else {
                         if (distance[w] > weight)
                             textInfo += "Вес ребра до данной вершины больше или равен тому, который уже записан.\n";
@@ -148,7 +148,7 @@ public class Algorithm {
             v = 1;
             dist = MAX_INT;
             for (int i = 1; i <= numVertices; ++i) {
-                if (!intree[i] && dist > distance[i]) {
+                if (!intree[i] && dist > distance[i] && parent[i] != -1) {
                     dist = distance[i];
                     v = i;
                 }
