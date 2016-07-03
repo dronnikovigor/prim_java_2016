@@ -24,6 +24,8 @@ public class Algorithm {
     private Graph.Edge p;       // временный указатель
     private int v;             // текущая вершина для обработки
 
+    private String textInfo;
+
     /**
      *
      */
@@ -34,6 +36,8 @@ public class Algorithm {
         intree = new boolean[G.edges.length];
         distance = new int[G.edges.length];
         parent = new int[G.edges.length];
+
+        textInfo = "";
     }
 
     public int[] getParent() {
@@ -53,6 +57,10 @@ public class Algorithm {
     }
 
     public int getWeight(int j) {return G.edges[j].getWeight();}
+
+    public String getTextInfo() {
+        return textInfo;
+    }
 
     /**
      * Считывание данных из файла
@@ -129,20 +137,29 @@ public class Algorithm {
      * в противном случае - true
      */
     public boolean executeStepAlgorithm() {
+        textInfo = "";
         if (!intree[v]) {
             int w;                  // кондидат на следующую вершину
             int weight;             // вес ребра
             int dist;               // наилучшее текущее расстояние от начала
 
+            textInfo += "Вершина " + v + " добавлена в МОД\n";
+
             intree[v] = true;
             p = G.edges[v];
             while (p != null) {
                 w = p.getY();
+                textInfo += "Рассмотрим вершину " + w + "\n";
                 weight = p.getWeight();
                 if (distance[w] > weight && !intree[w]) {
                     distance[w] = weight;
                     parent[w] = v;
-
+                    textInfo += "Вес ребра до данной вершины меньше тем тот, который уже записан и она еще не добавлена в дерево. Заменяем вес на новый.\n";
+                }
+                else {
+                    if (distance[w] > weight)
+                        textInfo += "Вес ребра до данной вершины больше или равен тому, который уже записан.\n";
+                    else textInfo += "Данная вершина уже включена в МОД.\n";
                 }
                 p = p.getNext();
             }
@@ -154,8 +171,10 @@ public class Algorithm {
                     v = i;
                 }
             }
+            textInfo += "Далее рассмотрим вершину " +v;
             return false;
         } else {
+            textInfo += "Все вершины добавлены в МОД\n";
             return true;
         }
     }
@@ -172,6 +191,7 @@ public class Algorithm {
         p = null;
         v = 0;
 
+        textInfo = "";
     }
 }
 
