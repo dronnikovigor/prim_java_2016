@@ -146,19 +146,20 @@ public class Algorithm {
             p = G.edges[v];
             while (p != null) {
                 w = p.getY();
-                textInfo += "Рассмотрим вершину " + w + "\n";
-                weight = p.getWeight();
-                if (distance[w] > weight && !intree[w]) {
-                    distance[w] = weight;
-                    parent[w] = v;
-                    textInfo += "Вес ребра до данной вершины меньше тем тот, который уже записан и она еще не добавлена в дерево. Заменяем вес на новый.\n";
+                if (w != 0) {
+                    textInfo += "Рассмотрим вершину " + w + "\n";
+                    weight = p.getWeight();
+                    if (distance[w] > weight && !intree[w]) {
+                        distance[w] = weight;
+                        parent[w] = v;
+                        textInfo += "Вес ребра до данной вершины меньше тем тот, который уже записан и эта вершина еще не добавлена в дерево. Заменяем вес на новый.\n";
+                    } else {
+                        if (distance[w] > weight)
+                            textInfo += "Вес ребра до данной вершины больше или равен тому, который уже записан.\n";
+                        else textInfo += "Данная вершина уже включена в МОД.\n";
+                    }
+                    p = p.getNext();
                 }
-                else {
-                    if (distance[w] > weight)
-                        textInfo += "Вес ребра до данной вершины больше или равен тому, который уже записан.\n";
-                    else textInfo += "Данная вершина уже включена в МОД.\n";
-                }
-                p = p.getNext();
             }
             v = 1;
             dist = MAX_INT;
