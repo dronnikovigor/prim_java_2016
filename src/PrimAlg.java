@@ -1,7 +1,4 @@
-import javafx.scene.shape.Circle;
-
 import java.awt.*;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

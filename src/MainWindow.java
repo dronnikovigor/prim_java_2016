@@ -23,12 +23,8 @@ public class MainWindow extends JFrame {
         aboutButton.addActionListener(aboutActionListener);
         exitButton.addActionListener(exitActionListener);
 
-        aboutButton.setEnabled(false);
-
         setSize(500,500);
         setVisible(true);
-
-
     }
 
     public class StartButtonActionListener implements ActionListener {
@@ -38,7 +34,7 @@ public class MainWindow extends JFrame {
     }
     public class AboutButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            //PrimAlg alg_window = new PrimAlg();
+            AboutWindow about_window = new AboutWindow();
         }
     }
     public class ExitButtonActionListener implements ActionListener {
