@@ -7,10 +7,14 @@ import java.awt.event.ActionListener;
  */
 public class MainWindow extends JFrame {
     private JPanel rootPanel;
-    private JButton startButton;
-    private JButton aboutButton;
-    private JButton exitButton;
+    private JButton startButton; //Начать программу
+    private JButton aboutButton; //О программе
+    private JButton exitButton; //Вывод
 
+    /**
+     * Конструктор начального окна
+     *
+     */
     public MainWindow() {
         super("Алгоритм Прима");
         setContentPane(rootPanel);
@@ -28,16 +32,33 @@ public class MainWindow extends JFrame {
     }
 
     public class StartButtonActionListener implements ActionListener {
+        /**
+         * Обработчик действия кнопки startButton
+         *
+         * @param e - startActionListener
+         */
         public void actionPerformed(ActionEvent e) {
             PrimAlg alg_window = new PrimAlg();
         }
     }
-    public class AboutButtonActionListener implements ActionListener {
+
+       public class AboutButtonActionListener implements ActionListener {
+           /**
+            * Обработчик действия кнопки aboutButton
+            *
+            * @param e - aboutActionListener
+            */
         public void actionPerformed(ActionEvent e) {
             AboutWindow about_window = new AboutWindow();
         }
     }
+
     public class ExitButtonActionListener implements ActionListener {
+        /**
+         * Обработчик действия кнопки exitButton
+         *
+         * @param e - exitActionListener
+         */
         public void actionPerformed(ActionEvent e) {
             System.exit(1);
         }

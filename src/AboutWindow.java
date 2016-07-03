@@ -6,6 +6,9 @@ import javax.swing.*;
 public class AboutWindow extends JFrame{
     private JPanel rootPanel;
 
+    /**
+     * Конструктор окна О программе
+     */
     public AboutWindow(){
         super("О программе");
         setContentPane(rootPanel);
