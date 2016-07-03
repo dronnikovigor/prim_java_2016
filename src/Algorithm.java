@@ -158,8 +158,8 @@ public class Algorithm {
                             textInfo += "Вес ребра до данной вершины больше или равен тому, который уже записан.\n";
                         else textInfo += "Данная вершина уже включена в МОД.\n";
                     }
-                    p = p.getNext();
                 }
+                p = p.getNext();
             }
             v = 1;
             dist = MAX_INT;
