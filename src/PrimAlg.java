@@ -145,6 +145,13 @@ public class PrimAlg extends JFrame {
         }
     }
 
+    public void clear(){
+        Graphics2D gfx = (Graphics2D)rootPanel.getGraphics();
+        Color color_gray = new Color(238,238,238);
+        gfx.setColor(color_gray);
+        gfx.fillRect(0,0,windowSizeW/4*2,windowSizeH/5*3);
+    }
+
     public class LoadButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             prim.readData();
@@ -169,6 +176,7 @@ public class PrimAlg extends JFrame {
             paintGraph();
             paintStepGraph();
             if (check) nextButton.setEnabled(false);
+            outputText.setText(prim.getTextInfo());
         }
     }
     public class FinishButtonActionListener implements ActionListener {
@@ -178,6 +186,8 @@ public class PrimAlg extends JFrame {
             startButton.setEnabled(false);
             nextButton.setEnabled(false);
             finishButton.setEnabled(false);
+            clear();
+            outputText.setText("");
         }
     }
     public class ExitButtonActionListener implements ActionListener {
