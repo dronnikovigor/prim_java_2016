@@ -56,7 +56,8 @@ public class PrimAlg extends JFrame {
         gfx.setColor(color_gray);
         gfx.fillRect(0,0,windowSizeW/4*2,windowSizeH/5*3);
         gfx.setColor(Color.black);
-       // gfx.setFont(Font);
+        Font SegoiUI = new Font("Segoi UI Light", Font.PLAIN, 17);
+        gfx.setFont(SegoiUI);
         gfx.setStroke(new BasicStroke(2.0f));  // толщина равна 2
         double pi=3.14;
         double angle = 2*pi /(prim.getNumVertices());
@@ -90,6 +91,8 @@ public class PrimAlg extends JFrame {
                 e = e.getNext();
             }
         }
+        SegoiUI = new Font("Segoi UI Light", Font.PLAIN, 15);
+        gfx.setFont(SegoiUI);
         for (int j = 1; j<=prim.getNumVertices(); j++){
             double x = r*Math.cos(angle*(j)-pi/2) + u;
             double y = r*Math.sin(angle*(j)-pi/2) + v;
@@ -148,6 +151,7 @@ public class PrimAlg extends JFrame {
             loadButton.setEnabled(false);
             startButton.setEnabled(true);
             finishButton.setEnabled(true);
+            paintGraph();
         }
     }
     public class StartButtonActionListener implements ActionListener {
