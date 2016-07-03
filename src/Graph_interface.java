@@ -14,5 +14,5 @@ public interface Graph_interface {
      * @param _y      конец дуги
      * @param _weight вес дуги
      */
-    void addEdge(byte _x, byte _y, int _weight);
+    void addEdge(int _x, int _y, int _weight);
 }

@@ -39,12 +39,10 @@ public class Algorithm {
 
         textInfo = "";
     }
-    public byte getMAXV(){return G.MAX_V;}
+    public int getMAXV(){return G.MAX_V;}
     public int[] getParent() {
         return parent;
     }
-
-    public Graph getGraph() {return G;}
 
     public Graph.Edge getEdge(int j) {return G.edges[j];}
 
@@ -66,38 +64,24 @@ public class Algorithm {
         File f = new File("input.txt");
         try {
             Scanner scan = new Scanner(f);
-            byte temp = 0;
-            temp = scan.nextByte();
-            if (temp <= 0) throw new IllegalArgumentException();
-            else
-                numVertices = temp;
+
+            numVertices = scan.nextInt();
+            if (numVertices <= 0) throw new IllegalArgumentException();
 
             for (int i = 0; i < numVertices; ++i) {
-                byte vertex_x;
-                temp = scan.nextByte();
-                if (temp <= 0) throw new IllegalArgumentException();
-                else
-                    vertex_x = temp;
+                int vertex_x = scan.nextInt();
+                if (vertex_x <= 0) throw new IllegalArgumentException();
 
-                byte numEdges;
-                temp = scan.nextByte();
-                if (temp < 0) throw new IllegalArgumentException();
-                else
-                    numEdges = temp;
+                int numEdges = scan.nextInt();
+                if (numEdges < 0) throw new IllegalArgumentException();
 
                 for (int j = 0; j < numEdges; ++j) {
 
-                    byte vertex_y;
-                    temp = scan.nextByte();
-                    if (temp <= 0) throw new IllegalArgumentException();
-                    else
-                        vertex_y = temp;
+                    int vertex_y = scan.nextInt();
+                    if (vertex_y <= 0) throw new IllegalArgumentException();
 
-                    int _weight;
-                    int t = scan.nextInt();
-                    if (temp <= 0) throw new IllegalArgumentException();
-                    else
-                        _weight = t;
+                    int _weight = scan.nextInt();
+                    if (_weight <= 0) throw new IllegalArgumentException();
 
                     G.addEdge(vertex_x, vertex_y, _weight);
                 }
@@ -163,7 +147,7 @@ public class Algorithm {
             }
             v = 1;
             dist = MAX_INT;
-            for (byte i = 1; i <= numVertices; ++i) {
+            for (int i = 1; i <= numVertices; ++i) {
                 if (!intree[i] && dist > distance[i]) {
                     dist = distance[i];
                     v = i;
