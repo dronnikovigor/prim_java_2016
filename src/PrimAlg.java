@@ -2,7 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Ellipse2D;
 
 /**
  * Created by dronn on 30.06.2016.
